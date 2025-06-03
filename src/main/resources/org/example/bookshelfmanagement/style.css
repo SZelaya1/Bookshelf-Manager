@@ -1,0 +1,120 @@
+.root {
+    -fx-font-family: "Segoe UI", sans-serif;
+    -fx-background-color: #ffffff;
+}
+
+.label {
+    -fx-text-fill: #e67e22;
+}
+
+.heading {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #e67e22;
+}
+
+.button {
+    -fx-background-color: #e67e22;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8;
+    -fx-cursor: hand;
+    -fx-padding: 8 16;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 6, 0, 0, 2);
+    -fx-transition: all 0.2s ease-in-out;
+}
+
+.button:hover {
+    -fx-background-color: #d35400;
+}
+
+.button:pressed {
+    -fx-background-color: #ba4a00;
+}
+
+.text-field {
+    -fx-background-color: #fdfdfd;
+    -fx-border-color: #e67e22;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-padding: 6 10;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 2, 0, 0, 1);
+}
+
+.text-field:focused {
+    -fx-border-color: #d35400;
+    -fx-border-width: 2;
+}
+
+.choice-box {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #e67e22;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-padding: 6 10;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 2, 0, 0, 1);
+}
+
+.choice-box:focused {
+    -fx-border-color: #d35400;
+    -fx-border-width: 2;
+}
+
+.titled-pane {
+    -fx-text-fill: #e67e22;
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 3, 0, 0, 1);
+}
+
+.titled-pane > .title {
+    -fx-background-color: #fcebd4;
+    -fx-background-radius: 5 5 0 0;
+    -fx-padding: 8 12;
+    -fx-font-size: 14px;
+}
+
+.titled-pane:collapsed > .title {
+    -fx-background-color: #fff6ee;
+}
+
+.titled-pane > .content {
+    -fx-background-radius: 0 0 5 5;
+    -fx-padding: 10;
+    -fx-background-color: #fffaf5;
+}
+
+.text-area {
+    -fx-border-color: #e67e22;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-control-inner-background: #fffaf5;
+    -fx-font-size: 13px;
+    -fx-padding: 10;
+    -fx-line-spacing: 4px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 4, 0, 0, 2);
+}
+
+.text-area .scroll-bar:vertical {
+    -fx-background-color: #fdf2e9;
+}
+
+.text-area .scroll-bar .thumb {
+    -fx-background-color: #e67e22;
+    -fx-background-radius: 4;
+}
+
+.hbox, .vbox {
+    -fx-spacing: 10;
+}
+
+.menu-item {
+    -fx-background-color: white;
+    -fx-text-fill: #e67e22;
+    -fx-padding: 6 10;
+    -fx-font-weight: normal;
+}
+
+.menu-item:focused {
+    -fx-background-color: #fcebd4;
+    -fx-text-fill: #d35400;
+}

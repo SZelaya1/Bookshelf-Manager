@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="TOP_CENTER" spacing="15.0" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="org.example.bookshelfmanagement.StartController"
+      stylesheets="@style.css">
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <Label text="📚 Book Management" styleClass="heading"/>
+
+    <TitledPane text="Add New Book">
+        <VBox spacing="10">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+            <TextField fx:id="titleField" promptText="Title"/>
+            <TextField fx:id="authorField" promptText="Author"/>
+            <TextField fx:id="yearField" promptText="Year"/>
+            <TextField fx:id="isbnField" promptText="ISBN"/>
+            <ChoiceBox fx:id="genreChoiceBox"/>
+
+            <HBox spacing="10" alignment="CENTER">
+                <Button text="Add Book" onAction="#addBook"/>
+                <Button text="Remove Book" onAction="#removeBook"/>
+            </HBox>
+        </VBox>
+    </TitledPane>
+
+    <TitledPane text="Search Books">
+        <VBox spacing="10">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+            <TextField fx:id="searchTitleField" promptText="Search by Title"/>
+            <TextField fx:id="searchAuthorField" promptText="Search by Author"/>
+            <TextField fx:id="searchGenreField" promptText="Search by Genre"/>
+            <HBox spacing="10">
+                <TextField fx:id="yearFromField" promptText="Year From"/>
+                <TextField fx:id="yearToField" promptText="Year To"/>
+            </HBox>
+            <HBox spacing="10" alignment="CENTER">
+                <Button text="Search Title" onAction="#searchTitle"/>
+                <Button text="Search Author + Genre" onAction="#searchAuthorGenre"/>
+                <Button text="Search Year Range" onAction="#searchYearRange"/>
+            </HBox>
+        </VBox>
+    </TitledPane>
+
+    <HBox spacing="10" alignment="CENTER">
+        <Button text="Display All Books" onAction="#displayAllBooks"/>
+        <Button text="Sort Alphabetically" onAction="#sortBooks"/>
+    </HBox>
+
+    <Label text="📖 Results:" styleClass="label"/>
+
+    <TextArea fx:id="outputArea" editable="false" wrapText="true" VBox.vgrow="ALWAYS"/>
+</VBox>
