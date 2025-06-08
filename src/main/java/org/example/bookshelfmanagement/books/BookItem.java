@@ -17,13 +17,15 @@ public abstract class BookItem {
 
     public boolean validate() {
         int currentYear = java.time.Year.now().getValue();
-        return (year >= 1000 && year <= currentYear) && (isbn != null && !isbn.isEmpty());
+        boolean validYear = year >= 1000 && year <= currentYear;
+        boolean validIsbn = isbn != null && !isbn.isEmpty() && (isbn.length() == 10 || isbn.length() == 13);
+        return validYear && validIsbn;
     }
 
     public abstract int getEstimatedReadingTime();
 
     public String getBasicInfo() {
-        return title + " by " + author + " (" + year + ")\nISBN: " + isbn;
+        return title + " by " + author + " (" + year + ") - ISBN: " + isbn;
     }
 
     public String toDetailedString() {
@@ -34,4 +36,8 @@ public abstract class BookItem {
     public String getAuthor() { return author; }
     public int getYear() { return year; }
     public String getIsbn() { return isbn; }
+
+    public String toFileString() {
+        return getClass().getSimpleName() + ";" + title + ";" + author + ";" + year + ";" + isbn;
+    }
 }

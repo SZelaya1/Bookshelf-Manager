@@ -2,7 +2,7 @@ package org.example.bookshelfmanagement.books;
 
 public class Cookbook extends NonFictionBook {
     private int recipeCount = 120;
-    private String cuisineType = "Indian / International Fusion";
+    private String cuisineType = "International Fusion";
 
     public Cookbook(String title, String author, int year, String isbn) {
         super(title, author, year, isbn);

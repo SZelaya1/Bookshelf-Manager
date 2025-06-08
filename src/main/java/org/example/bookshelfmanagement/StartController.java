@@ -8,6 +8,7 @@ import org.example.bookshelfmanagement.books.*;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.io.*;
 
 public class StartController {
     private List<BookItem> books = new ArrayList<>();
@@ -21,13 +22,14 @@ public class StartController {
     @FXML private TextField yearFromField;
     @FXML private TextField yearToField;
     @FXML private TextArea outputArea;
-    @FXML public ChoiceBox<String> genreChoiceBox;
+    @FXML private ChoiceBox<String> genreChoiceBox;
+    private String fileName = "src/main/resources/books.txt";
 
     public StartController() {
         // Initial
-        books.add(new FictionBook("Dune", "Frank Herbert", 1965, "9780441013593"));
-        books.add(new Cookbook("Best Indian Food Ideas", "Gordon Ramsey", 2011, "9781451648539"));
-        books.add(new FictionBook("1984", "George Orwell", 1949, "9780451524935"));
+        books.add(new FictionBook("Dune", "Frank Herbert", 1965, "0441172717"));
+        books.add(new Cookbook("Best Recipes Ever", "Gordon Ramsey", 2011, "3451289987"));
+        books.add(new Novel("The Great Gatsby", "F. Scott Fitzgerald", 1925, "9780241965672"));
     }
 
     @FXML
@@ -155,5 +157,45 @@ public class StartController {
         authorField.clear();
         yearField.clear();
         isbnField.clear();
+    }
+
+    public void saveBooksToFile() {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
+            for (BookItem book : books) {
+                writer.write(book.toFileString());
+                writer.newLine();
+            }
+            outputArea.setText("Books saved to " + fileName);
+        } catch (IOException e) {
+            outputArea.setText("Error saving books: " + e.getMessage());
+        }
+    }
+
+    public void loadBooksFromFile() {
+        books.clear();
+        try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] parts = line.split(";");
+                if (parts.length == 5) {
+                    String type = parts[0];
+                    String title = parts[1];
+                    String author = parts[2];
+                    int year = Integer.parseInt(parts[3]);
+                    String isbn = parts[4];
+
+                    BookItem book = switch (type) {
+                        case "Novel" -> new Novel(title, author, year, isbn);
+                        case "Cookbook" -> new Cookbook(title, author, year, isbn);
+                        case "Textbook" -> new Textbook(title, author, year, isbn);
+                        default -> new FictionBook(title, author, year, isbn);
+                    };
+                    books.add(book);
+                }
+            }
+            outputArea.setText("Books loaded from " + fileName);
+        } catch (IOException | NumberFormatException e) {
+            outputArea.setText("Error loading books: " + e.getMessage());
+        }
     }
 }
