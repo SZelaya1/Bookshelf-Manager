@@ -178,13 +178,13 @@ public class StartController {
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(";");
                 if (parts.length == 5) {
-                    String type = parts[0];
+                    String genre = parts[0];
                     String title = parts[1];
                     String author = parts[2];
                     int year = Integer.parseInt(parts[3]);
                     String isbn = parts[4];
 
-                    BookItem book = switch (type) {
+                    BookItem book = switch (genre) {
                         case "Novel" -> new Novel(title, author, year, isbn);
                         case "Cookbook" -> new Cookbook(title, author, year, isbn);
                         case "Textbook" -> new Textbook(title, author, year, isbn);
