@@ -25,17 +25,10 @@ public class StartController {
     @FXML private ChoiceBox<String> genreChoiceBox;
     private String fileName = "src/main/resources/books.txt";
 
-    public StartController() {
-        // Initial
-        books.add(new FictionBook("Dune", "Frank Herbert", 1965, "0441172717"));
-        books.add(new Cookbook("Best Recipes Ever", "Gordon Ramsey", 2011, "3451289987"));
-        books.add(new Novel("The Great Gatsby", "F. Scott Fitzgerald", 1925, "9780241965672"));
-    }
-
     @FXML
     public void initialize() {
         genreChoiceBox.getItems().addAll("Fiction", "Novel", "Cookbook", "Textbook");
-        genreChoiceBox.setValue("Fiction"); // Optional: set default
+        genreChoiceBox.setValue("Fiction");
     }
 
     @FXML

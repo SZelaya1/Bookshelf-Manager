@@ -14,7 +14,7 @@
 
     <Label text="📚 Book Management" styleClass="heading"/>
 
-    <TitledPane text="Add New Book">
+    <TitledPane text="Add or Remove Book">
         <VBox spacing="10">
             <padding>
                 <Insets top="10" right="10" bottom="10" left="10"/>
