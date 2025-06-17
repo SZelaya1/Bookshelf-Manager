@@ -13,6 +13,7 @@ A simple JavaFX application for managing a personal virtual bookshelf. This proj
   - Year Range
 - Display all stored books
 - Sort books alphabetically
+- Save collection or load from a file for future use
 - GUI built using **FXML**
 - Icon included (`bookshelf.png`)
 
